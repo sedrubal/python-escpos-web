@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Python ESC/POS</title>
+    <style type="text/css">
+#msgbox {
+  text-align: center;
+  padding: .5em;
+  margin: .5em;
+}
+#msgbox.danger {
+  background-color: red;
+}
+#msgbox.success {
+  background-color: green;
+}
+#loading {
+  background-color: yellow;
+  text-align: center;
+  padding: .5em;
+  margin: .5em;
+}
+.hide {
+  visibility: hidden;
+}
+    </style>
+  </head>
+  <body>
+    <h1>Python ESC/POS</h1>
+    <div id="msgbox"></div>
+    <div id="loading" class="hide">Loading/Printing...</div>
+    <textarea name="text" id="text" cols="40" placeholder="Enter text to print"></textarea>
+    <br>
+    <button type="button" onclick="printText()">Print Text</button>
+    <hr>
+    <input type="text" name="barcode" id="barcode" placeholder="Enter barcode content"></input>
+    <select name="barcode-type" id="barcode-type">
+      <option value="EAN8">EAN8</option>
+      <option value="EAN13">EAN13</option>
+    </select>
+    <button type="button" onclick="printBarcode()">Print Barcode</button>
+    <hr>
+    <input type="file" name="image" id="image">
+    <label>
+      <input type="checkbox" name="image-resize" id="image-resize">
+      Resize Image to fit to paper width:
+    </label>
+    <input type="number" name="image-resize-value" id="image-resize-value" placeholder="Width" value="500">
+    <button type="button" onclick="printImage()">Print Image</button>
+    <hr>
+    <button id="cutbtn" type="button" onClick="cut()">Cut</button>
+    <hr>
+    <button id="resetbtn" type="button" onClick="reset()">Reset</button>
+    <hr>
+    <label>
+      <input type="checkbox" name="cut" id="cut" checked>
+      Cut after printing
+    </label>
+
+    <script src="{{ static_url("script.js") }}"></script>
+    <p>Status: <span id="status">connecting...</span></p>
+  </body>
+</html>
